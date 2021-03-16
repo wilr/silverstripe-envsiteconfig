@@ -1,0 +1,26 @@
+{
+    "name": "wilr/silverstripe-envsiteconfig",
+    "description": "View, set & override env variables using SiteConfig",
+    "type": "silverstripe-vendormodule",
+    "autoload": {
+        "psr-4": {
+            "Wilr\\EnvSiteConfig\\": "src/",
+            "Wilr\\EnvSiteConfig\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "silverstripe/framework": "^4",
+        "silverstripe/siteconfig": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "scripts": {
+        "lint": "phpcs src/ tests/",
+        "lint:fix": "phpcbf src/ tests/"
+    }
+}

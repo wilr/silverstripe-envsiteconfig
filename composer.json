@@ -2,6 +2,7 @@
     "name": "wilr/silverstripe-envsiteconfig",
     "description": "View, set & override env variables using SiteConfig",
     "type": "silverstripe-vendormodule",
+    "license": "BSD-3-Clause",
     "autoload": {
         "psr-4": {
             "Wilr\\EnvSiteConfig\\": "src/",

@@ -7,6 +7,7 @@ use SilverStripe\Core\Environment;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\Permission;
 
 class EnvSiteConfigExtension extends DataExtension
 {
@@ -22,6 +23,12 @@ class EnvSiteConfigExtension extends DataExtension
      *
      */
     private static $allowlist_descriptions = [];
+    
+    /**
+     * @config
+     *
+     */
+    private static $required_permission = 'ADMIN';
 
     private static $db = [
         'Env' => 'Text'
@@ -36,8 +43,9 @@ class EnvSiteConfigExtension extends DataExtension
     {
         $allowed = Config::inst()->get(__CLASS__, 'allowlist');
         $descriptions = Config::inst()->get(__CLASS__, 'allowlist_descriptions');
-
-        if ($allowed) {
+        $permission = Config::inst()->get(__CLASS__, 'required_permission');
+        
+        if ($allowed && Permission::check($permission)) {
             $env = [];
             foreach ($allowed as $envvar) {
                 $desc = (isset($descriptions[$envvar])) ? $descriptions[$envvar] : '';
